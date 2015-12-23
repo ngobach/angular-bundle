@@ -10,6 +10,7 @@ var jshint = require('gulp-jshint');
 var minify = require('gulp-uglify');
 var serve = require('gulp-serve');
 var plumber = require('gulp-plumber');
+var csso = require('gulp-csso');
 
 /**
  * Copy depencies
@@ -32,26 +33,43 @@ gulp.task('dep', function() {
 		.pipe(gulp.dest("public/css/"));
 });
 
+var build = function(release){
+	return function(){
+		var _ = gulp.src('src/**/*.js');
+		if (release){
+			_
+				.pipe(plumber())
+				.pipe(jshint())
+				.pipe(jshint.reporter('jshint-stylish'));
+		}
+		_
+			.pipe(concat("main.js"))
+			.pipe(minify())
+			.pipe(gulp.dest("public/js/"));
+		_ = gulp.src('src/**/*.css');
+		if (release){
+			_
+				.pipe(csso());
+		}
+		_
+			.pipe(concat("main.css"))
+			.pipe(gulp.dest("public/css/"));
+		// Others
+	  	gulp.src([
+		    'src/**/*',
+		    '!src/**/*.{css,js}'
+		  	])
+	  		.pipe(gulp.dest('public/'));
+
+	}
+}
 /**
  * Copy and build src files
  *
  */
-gulp.task('build',function(){
-	gulp.src('src/**/*.js')
-		.pipe(concat("main.js"))
-		.pipe(gulp.dest("public/js/"));
-	gutil.log('Building...');
-});
+gulp.task('build',build(false));
 
-gulp.task('build:release',function(){
-	gulp.src('src/**/*.js')
-		.pipe(plumber())
-		.pipe(jshint())
-		.pipe(jshint.reporter('jshint-stylish'))
-		.pipe(minify())
-		.pipe(concat("main.js"))
-		.pipe(gulp.dest("public/js/"));
-});
+gulp.task('build:dest',build(true));
 
 gulp.task('serve',serve('public'));
 gulp.task('watch',function(){
