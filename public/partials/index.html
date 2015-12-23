@@ -1,0 +1,40 @@
+
+<div class="container" ng-controller="TodoListController as todoList">
+	<div class="panel">
+		<div class="panel-body">
+			<h4>New Job</h4>
+			<div class="form-group">
+				<div class="input-group">
+					<input class="form-control" type="text" ng-model="todoList.job" placeholder="Enter your job!"/>
+					<span class="input-group-btn">
+						<button class="btn btn-primary" ng-click="todoList.add()">ADD</button>
+					</span>
+				</div>
+			</div>
+			<h4>Remain {{todoList.remain()}} of {{todoList.todos.length }}</h4>
+			<ul class="list-group">
+				<li class="list-group-item"  ng-repeat="todo in todoList.todos">
+					{{ todo.text }}
+					<div class="btn-group btn-group-xs pull-right">
+						<button class="btn btn-xs" ng-class="{'btn-success':todo.done,'btn-default':!todo.done}" ng-click="todo.done=!todo.done">Toggle</button>
+						<a class="btn btn-info btn-xs" ng-click="todoList.view(todo)">Detail</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="panel-footer">
+			<div class="clearfix">
+				<div class="btn-group pull-right">
+					<button class="btn btn-primary" ng-click="todoList.archive()">Archive</button>
+					<button class="btn btn-warning" ng-click="todoList.clearSelection()">Clear</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div uib-dropdown>
+		<a uib-dropdown-toggle href="#" class="btn btn-primary">Click me <span class="caret"></span></a>
+		<ul class="dropdown-menu">
+			<li><a href="#/nope">Okay</a></li>
+		</ul>
+	</div>
+</div>

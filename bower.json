@@ -1,0 +1,26 @@
+{
+  "name": "angularjs",
+  "description": "",
+  "main": "",
+  "authors": [
+    "ThanBaiKS <thanbaiks@gmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "com",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-base64": "~2.0.5",
+    "angular-bootstrap": "~0.14.3",
+    "angular": "~1.4.8",
+    "angular-route": "~1.4.8",
+    "bootstrap": "~3.3.6"
+  }
+}
