@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<title>{{pageTitle}} :: AngularJS</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="css/main.css"/>
+
+		<!-- Script section -->
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<script type="text/javascript" src="js/angular-route.min.js"></script>
+		<script type="text/javascript" src="js/angular-base64.min.js"></script>
+		<script type="text/javascript" src="js/ui-bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/ui-bootstrap-tpls.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+	</head>
+	<body style="background: #EEE">
+		<div class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#/"><b class="text-danger">A</b>ngularJS</a>
+				</div>
+				<nav class="navbar-collapse navbar-left">
+					<ul class="nav navbar-nav">
+						<li><a href="#/">Home</a></li>
+						<li uib-dropdown>
+							<a uib-dropdown-toggle href="#">Dropdown <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li class="dropdown-header">Heading</li>
+								<li><a href="http://ngobach.net/">NgoBach.net</a></li>
+								<li class="disabled"><a href="#1">Menu disabled</a></li>
+								<li class="divider"></li>
+								<li><a href="#3">Another menu item</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+				<nav class="navbar-collapse navbar-right">
+					<ul class="nav navbar-nav">
+						<li><a href="" ng-click="login()">Login</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		
+		<div ng-view></div>
+		<footer class="container">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-4 text-left text-muted">
+							&copy; 2015 ThanBaiKS
+						</div>
+						<div class="col-xs-8 text-right text-muted">
+							<a href="http://ngobach.net/">http://ngobach.net/</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

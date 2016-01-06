@@ -2,11 +2,7 @@ angular.module('app')
 	.controller('TodoListController',['$rootScope','$base64','$location','$scope', function($rootScope,$base64,$location,$scope){
 		$rootScope.pageTitle = 'List todos';
 		$scope.name = "NgoBach";
-		$scope.todos = [
-			{text : 'Hello', done : false},
-			{text : 'Hello 2', done : true},
-			{text : 'Hello 3 <br/>', done : false}
-		];
+		$scope.todos = [];
 
 		// Add function
 		$scope.add = function (){
